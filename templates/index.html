@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  padding: 15px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+</head>
+  <title>Todo App</title>
+  <h1>My To-Do List</h1>
+  <body>
+    <table border=1>
+    <thead>
+    <td><h3>To-do task name</h3></td>
+    <td><h3>Email of assigned person</h3></td>
+    <td><h3>Priority Level</h3></td>
+    </thead>
+    {% for row in mylist%}
+    <tr>
+      <td><h3>{{row[0]}}</h3></td>
+      <td><h3>{{row[1]}}</h3></td>
+      <td><h3>{{row[2]}}</h3></td>
+    </tr>
+    {% endfor %}
+     </table>
+  <a href='/clear'>Clear my to-do list</a>
+  </body>
+  <br>
+  <body>
+    <form action=" {{ url_for('additem') }} " method="POST">
+    <h1>Enter a New To-do Task</h1>
+    Task: <input type='text' name='task'></input>
+    Email: <input type='text' name='email'></input>
+    Priority:
+    <select name='priority'>
+      <option  selected='selected' value='low'>Low</option>
+      <option value='medium'>Medium</option>
+      <option value='high'>High</option>
+    </select>
+    
+    <input type='submit' value='submit' >
+
+    </form>
+  </body>
+
+</html>
